@@ -10,7 +10,7 @@ import "@openzeppelin/contracts-upgradeable/governance/extensions/GovernorTimelo
 import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 
 /// @custom:security-contact dev.mosinas@gmail.com
-contract ConvernorContract is
+contract GovernorContract is
                     Initializable,
                     GovernorUpgradeable,
                     GovernorSettingsUpgradeable,
@@ -22,10 +22,15 @@ contract ConvernorContract is
     /// @custom:oz-upgrades-unsafe-allow constructor
     constructor() initializer {}
 
-    function initialize(IVotesUpgradeable _token, TimelockControllerUpgradeable _timelock, uint256 _votingDelay, uint256 _votingPeriod, uint256 _quorum)
-        initializer public
+    function initialize(
+        IVotesUpgradeable _token,
+        TimelockControllerUpgradeable _timelock,
+        uint256 _votingDelay,
+        uint256 _votingPeriod,
+        uint256 _quorum
+    ) initializer public
     {
-        __Governor_init("ConvernorContract");
+        __Governor_init("GovernorContract");
         __GovernorSettings_init(
             _votingDelay,
             _votingPeriod,

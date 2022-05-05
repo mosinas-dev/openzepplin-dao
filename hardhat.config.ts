@@ -1,11 +1,10 @@
 import * as dotenv from "dotenv";
-
-import { HardhatUserConfig, task } from "hardhat/config";
-import "hardhat-deploy";
-import "@nomiclabs/hardhat-ethers";
-import "@typechain/hardhat";
-import "hardhat-gas-reporter";
-import { HardhatConfig } from "hardhat/types"
+import "@nomiclabs/hardhat-ethers"
+import "@nomiclabs/hardhat-etherscan"
+import "@typechain/hardhat"
+import "hardhat-gas-reporter"
+import "hardhat-deploy"
+import { HardhatUserConfig, task } from "hardhat/config"
 
 dotenv.config();
 
@@ -52,6 +51,11 @@ const config: HardhatUserConfig = {
   namedAccounts: {
     deployer: {
       default: 0
+    }
+  },
+  etherscan: {
+    apiKey: {
+      bscTestnet: process.env.BSCSCAN_API_KEY || ""
     }
   }
 };

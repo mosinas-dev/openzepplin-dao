@@ -2,6 +2,9 @@ import { run } from "hardhat"
 
 export default async (contractAddress: string, args: any[]) => {
   console.log("Verifying contract...")
+  console.log(contractAddress)
+  console.log(args)
+
   try {
     await run("verify:verify", {
       address: contractAddress,
