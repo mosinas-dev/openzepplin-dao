@@ -53,7 +53,7 @@ const deployConvernor: DeployFunction = async function(
     }
 
   if (!developmentChains.includes(network.name) && PRIMARY_KEY) {
-    await verify(governor.address, [])
+    await verify(governor.address, 'contracts/GovernorContract.sol:GovernorContract',[])
   }
 }
 

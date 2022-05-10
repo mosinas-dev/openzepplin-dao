@@ -23,12 +23,14 @@ task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
 // Go to https://hardhat.org/config/ to learn more
 
 const config: HardhatUserConfig = {
-  defaultNetwork: "bsctest",
+  defaultNetwork: "rinkeby",
   solidity: {
     version: "0.8.4",
     settings: {
       optimizer: {
-        enabled: process.env.DEBUG ? false : true
+        // enabled: !process.env.DEBUG,
+        enabled: true,
+        runs: 1500
       },
     }
   },
@@ -40,6 +42,13 @@ const config: HardhatUserConfig = {
       url: process.env.BSCTESTNET_URL || "",
       chainId: 97,
       accounts: process.env.BSCTESTNET_PRIVATE_KEY !== undefined ? [process.env.BSCTESTNET_PRIVATE_KEY] : [],
+    },
+    rinkeby: {
+      url: process.env.RINKEBY_URL,
+      chainId: 0x66eeb,
+      accounts: process.env.RINKEBY_PRIVATE_KEY !== undefined ? [process.env.RINKEBY_PRIVATE_KEY] : [],
+      // gas: 2100000,
+      // gasPrice: 8000000000
     }
   },
   gasReporter: {
@@ -55,7 +64,8 @@ const config: HardhatUserConfig = {
   },
   etherscan: {
     apiKey: {
-      bscTestnet: process.env.BSCSCAN_API_KEY || ""
+      bscTestnet: process.env.BSCSCAN_API_KEY || "",
+      rinkeby: process.env.RENKEBY_PRIVATE_KEY || ""
     }
   }
 };

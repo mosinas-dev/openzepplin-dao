@@ -26,7 +26,9 @@ const deployTimelock: DeployFunction =async function(
     log(`Deployed timelock contract to address ${timelock.address}`)
 
     if (!developmentChains.includes(network.name) && PRIMARY_KEY) {
-      await verify(timelock.address, [])
+      await verify(timelock.address, 'contracts/Timelock.sol:Timelock',[
+        MIN_DELAY, [], []
+      ])
     }
 
 }

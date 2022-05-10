@@ -21,12 +21,13 @@ const deployGovernanceToken: DeployFunction = async function(
     from: deployer,
     args: [],
     log: true,
+    // @ts-ignore
     // waitConfirmation: networkConfiguration[networkName].blockConfirmation,
   });
   log(`Deployed governance token to address ${governanceToken.address}`)
 
   if (!developmentChains.includes(network.name) && PRIMARY_KEY) {
-    await verify(governanceToken.address, [])
+    await verify(governanceToken.address, 'contracts/GovernanceToken.sol:GovernanceToken',[])
   }
   log(`Delegated to ${deployer}`)
   await delegate(governanceToken.address, deployer)
