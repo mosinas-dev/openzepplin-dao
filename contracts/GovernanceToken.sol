@@ -28,7 +28,6 @@ contract GovernanceToken is Initializable, ERC20Upgradeable, OwnableUpgradeable,
 
     function _authorizeUpgrade(address newImplementation) internal onlyOwner override {}
 
-    // The following functions are overrides required by Solidity.
 
     function _afterTokenTransfer(address from, address to, uint256 amount) internal override(ERC20Upgradeable, ERC20VotesUpgradeable)
     {
