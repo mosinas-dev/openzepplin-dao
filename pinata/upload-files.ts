@@ -1,0 +1,2 @@
+import { pinata } from "./pinata";
+

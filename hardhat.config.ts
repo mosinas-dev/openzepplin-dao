@@ -18,6 +18,14 @@ task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
   }
 });
 
+task('mint', "Mint Ntf token", async (taskArgs, hre) => {
+  const { deployments } = hre
+  const { get, log } = deployments
+  const contract = await get('NFTToken')
+
+  console.log(contract)
+});
+
 
 // You need to export an object to set up your config
 // Go to https://hardhat.org/config/ to learn more
